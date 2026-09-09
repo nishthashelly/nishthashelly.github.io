@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nishtha Shelly — Photonics &amp; 2D Materials Researcher</title>
+<meta name="description" content="Nishtha Shelly — postdoctoral researcher in 2D materials and photonic devices at Institut Quantique / 3IT, Université de Sherbrooke.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0E1420;
+    --bg-panel: #161D2E;
+    --bg-panel-2: #131A29;
+    --line: #26314A;
+    --text: #EDEEF2;
+    --text-dim: #9AA3B8;
+    --text-faint: #6B7690;
+    --cyan: #5FD4D0;
+    --gold: #E8B04B;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--cyan); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce){
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+  }
+
+  .wrap{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position: sticky; top:0; z-index: 20;
+    background: rgba(14,20,32,0.86);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-name{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+  .nav-links{ display:flex; gap: 28px; }
+  .nav-links a{
+    color: var(--text-dim);
+    font-size: 0.92rem;
+  }
+  .nav-links a:hover{ color: var(--text); }
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    position: relative;
+    padding: 96px 0 88px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .lattice{
+    position:absolute;
+    top: -10%; right: -8%;
+    width: 620px; height: 620px;
+    opacity: 0.5;
+    pointer-events:none;
+  }
+  .hero-inner{ position: relative; max-width: 620px; }
+  .eyebrow{
+    color: var(--cyan);
+    font-size: 0.92rem;
+    margin: 0 0 18px;
+  }
+  .eyebrow-inline{
+    color: var(--cyan);
+    font-family: var(--sans);
+    font-size: 0.92rem;
+  }
+  h1{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    line-height: 1.08;
+    margin: 0 0 22px;
+    letter-spacing: -0.01em;
+  }
+  .hero-lede{
+    font-size: 1.12rem;
+    color: var(--text-dim);
+    max-width: 52ch;
+    margin: 0 0 34px;
+  }
+  .hero-actions{ display:flex; gap: 14px; flex-wrap: wrap; }
+  .btn{
+    display:inline-block;
+    padding: 11px 20px;
+    border-radius: 3px;
+    font-size: 0.94rem;
+    font-weight: 500;
+  }
+  .btn-primary{
+    background: var(--cyan);
+    color: #0E1420;
+  }
+  .btn-primary:hover{ background: #7fe0dc; text-decoration:none; }
+  .btn-secondary{
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+  .btn-secondary:hover{ border-color: var(--text-faint); text-decoration:none; }
+
+  /* ---------- Section shell ---------- */
+  section{ padding: 72px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type{ border-bottom: none; }
+  .section-head{
+    display:flex; align-items:baseline; justify-content: space-between;
+    margin-bottom: 34px; gap: 16px; flex-wrap: wrap;
+  }
+  h2{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.6rem;
+    margin: 0;
+  }
+  .section-note{ color: var(--text-faint); font-size: 0.9rem; }
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 48px;
+  }
+  .about-text p{ color: var(--text-dim); margin: 0 0 16px; }
+  .about-text p:last-child{ margin-bottom:0; }
+  .fact-list{ list-style:none; margin:0; padding:0; }
+  .fact-list li{
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+    display:flex; flex-direction:column; gap: 3px;
+  }
+  .fact-list li:first-child{ border-top:none; padding-top:0; }
+  .fact-label{ font-size: 0.78rem; color: var(--text-faint); }
+  .fact-value{ font-size: 0.95rem; }
+
+  /* ---------- Research ---------- */
+  .research-list{ display:flex; flex-direction:column; }
+  .research-item{
+    display:grid;
+    grid-template-columns: 200px 1fr;
+    gap: 28px;
+    padding: 26px 0;
+    border-top: 1px solid var(--line);
+  }
+  .research-item:first-child{ border-top:none; padding-top:0; }
+  .research-tag{
+    color: var(--gold);
+    font-size: 0.86rem;
+    padding-top: 3px;
+  }
+  .research-item h3{
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 1.02rem;
+    margin: 0 0 8px;
+  }
+  .research-item p{ color: var(--text-dim); margin:0; font-size: 0.96rem; }
+
+  /* ---------- Publications ---------- */
+  .pub-list{ list-style:none; margin:0; padding:0; }
+  .pub-list li{
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+    color: var(--text-dim);
+    font-size: 0.96rem;
+    line-height: 1.6;
+  }
+  .pub-list li:first-child{ border-top:none; padding-top:0; }
+  .pub-list .pub-authors{ color: var(--text); }
+  .pub-list .pub-venue{ color: var(--text-faint); }
+  .pub-subhead{
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.86rem;
+    color: var(--text-faint);
+    text-transform: none;
+    margin: 34px 0 4px;
+  }
+
+  /* ---------- Timeline ---------- */
+  .timeline{ position: relative; margin-left: 6px; }
+  .timeline::before{
+    content:"";
+    position:absolute; left:0; top: 6px; bottom: 6px;
+    width: 1px; background: var(--line);
+  }
+  .tl-item{
+    position: relative;
+    padding: 0 0 36px 28px;
+  }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:"";
+    position:absolute; left: -4px; top: 5px;
+    width: 9px; height:9px; border-radius:50%;
+    background: var(--bg);
+    border: 2px solid var(--cyan);
+  }
+  .tl-when{ color: var(--text-faint); font-size: 0.82rem; margin-bottom: 4px; }
+  .tl-what{ font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
+  .tl-where{ color: var(--text-dim); font-size: 0.92rem; }
+
+  /* ---------- Interests / pivot ---------- */
+  .pivot-text{ color: var(--text-dim); max-width: 62ch; margin: 0 0 24px; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap: 10px; }
+  .chip{
+    border: 1px solid var(--line);
+    color: var(--text-dim);
+    padding: 7px 14px;
+    border-radius: 3px;
+    font-size: 0.86rem;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-inner{ max-width: 520px; }
+  .contact-inner p{ color: var(--text-dim); margin-bottom: 28px; }
+  .contact-rows{ display:flex; flex-direction:column; gap: 0; }
+  .contact-row{
+    display:flex; justify-content: space-between; align-items:center;
+    padding: 16px 0; border-top: 1px solid var(--line);
+  }
+  .contact-row:first-child{ border-top:none; }
+  .contact-row .label{ color: var(--text-faint); font-size: 0.9rem; }
+
+  footer{
+    padding: 32px 0 48px;
+    color: var(--text-faint);
+    font-size: 0.82rem;
+  }
+
+  .fill-me{
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  @media (max-width: 720px){
+    .about-grid{ grid-template-columns: 1fr; gap: 30px; }
+    .research-item{ grid-template-columns: 1fr; gap: 6px; }
+    .nav-links{ gap: 16px; }
+    .lattice{ opacity: 0.28; width: 420px; height: 420px; }
+    header.hero{ padding: 72px 0 56px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="nav-name">Nishtha Shelly</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#pivot">Now looking at</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <svg class="lattice" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#5FD4D0" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#5FD4D0" stop-opacity="0.05"/>
+      </linearGradient>
+    </defs>
+    <g stroke="url(#fade)" stroke-width="1" fill="none">
+      <!-- honeycomb lattice, evoking 2D crystal structure -->
+      <path d="M120,60 L170,90 L170,150 L120,180 L70,150 L70,90 Z"/>
+      <path d="M170,150 L220,180 L220,240 L170,270 L120,240 L120,180"/>
+      <path d="M220,60 L270,90 L270,150 L220,180 L170,150 L170,90"/>
+      <path d="M270,150 L320,180 L320,240 L270,270 L220,240 L220,180"/>
+      <path d="M320,60 L370,90 L370,150 L320,180 L270,150 L270,90"/>
+      <path d="M170,270 L220,300 L220,360 L170,390 L120,360 L120,300"/>
+      <path d="M220,360 L270,390 L270,450 L220,480 L170,450 L170,390"/>
+      <path d="M270,270 L320,300 L320,360 L270,390 L220,360 L220,300"/>
+      <path d="M320,360 L370,390 L370,450 L320,480 L270,450 L270,390"/>
+      <path d="M370,270 L420,300 L420,360 L370,390 L320,360 L320,300"/>
+      <path d="M370,150 L420,180 L420,240 L370,270 L320,240 L320,180"/>
+      <path d="M420,60 L470,90 L470,150 L420,180 L370,150 L370,90"/>
+      <path d="M470,150 L520,180 L520,240 L470,270 L420,240 L420,180"/>
+    </g>
+    <!-- a single incident/deflected beam, tying it to photonics -->
+    <line x1="40" y1="500" x2="245" y2="345" stroke="#E8B04B" stroke-width="1.4" opacity="0.85"/>
+    <line x1="245" y1="345" x2="480" y2="500" stroke="#E8B04B" stroke-width="1.4" opacity="0.5"/>
+    <circle cx="245" cy="345" r="3.5" fill="#E8B04B"/>
+  </svg>
+
+  <div class="wrap hero-inner">
+    <p class="eyebrow">Photonics &amp; 2D Quantum Materials Enthusiast</p>
+    <p class="hero-lede">
+      Researcher and engineer
+    </p>
+    <h1>I build and probe light–matter interactions in atomically thin materials.</h1>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <a class="btn btn-secondary" href="mailto:REPLACE_WITH_EMAIL">Download CV</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head"><h2>About</h2></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a physicist with a background in electrical and electronics engineering working
+          at the boundary of two-dimensional (2D) materials (that are only a few atoms thick)
+          and photonics — nanofabrication and characterizing 2D materials based devices, then
+          studying how they interact with light, followed by electrically probing this
+          interaction. In my postdoctoral work I am leading two projects, one of which looks at
+          2D magnetic materials based tunnel junctions, which opens a new paradigm of
+          magnon-based devices that couple light and magnetism on a single chip, and the other
+          involves optimisation of a novel method of CVD graphene transfer for scalable,
+          continuous, and reproducible adaptation in commercial photonic integrated circuits.
+        </p>
+        <p>
+          Before Sherbrooke, I completed my PhD at Trinity College Dublin, Ireland, developing
+          pixelated stacks of transition metal dichalcogenides forming a Fabry–Pérot cavity for
+          tuning the refractive index of visible light. That work sits at the intersection of
+          materials deposition, nanofabrication, and optical measurement — the same combination
+          I bring to my current research.
+        </p>
+        <p>
+          <span class="eyebrow-inline">What draws me to this work?</span> In the world of physics, light feels purely magical to
+          me. Its mere existence gives life, nourishment, and technological resources for
+          humans to tread upon. It is eternal — it has always been there and will always be —
+          we just need to harvest its magic.
+        </p>
+      </div>
+      <ul class="fact-list">
+        <li>
+          <span class="fact-label">Current role</span>
+          <span class="fact-value">Postdoctoral Researcher, Institut Quantique / 3IT, Université de Sherbrooke</span>
+        </li>
+        <li>
+          <span class="fact-label">PhD</span>
+          <span class="fact-value">Physics (photonic 2D material based devices), Trinity College Dublin, Ireland</span>
+        </li>
+        <li>
+          <span class="fact-label">Currently based in</span>
+          <span class="fact-value">Sherbrooke, Québec, Canada</span>
+        </li>
+        <li>
+          <span class="fact-label">Open to</span>
+          <span class="fact-value">Industry, national lab, and academic collaborations in photonics &amp; quantum technologies</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Research</h2>
+      <span class="section-note">Current focus areas</span>
+    </div>
+    <div class="research-list">
+      <div class="research-item">
+        <span class="research-tag">2D Magnets</span>
+        <div>
+          <h3>Photocurrent effects in chromium trihalides</h3>
+          <p>
+            Investigating shift current, MOKE, and magnetic photogalvanic effects in 2D magnetic
+            materials, presently working with CrCl₃ and evaluating which of these effects are
+            worth pursuing given its comparatively weak spin–orbit coupling.
+          </p>
+        </div>
+      </div>
+      <div class="research-item">
+        <span class="research-tag">Device fabrication</span>
+        <div>
+          <h3>CVD graphene transfer &amp; heterostructure assembly</h3>
+          <p>
+            Growing and transferring CVD graphene and building 2D material heterostructures for
+            low-temperature optical and electronic measurement.
+          </p>
+        </div>
+      </div>
+      <div class="research-item">
+        <span class="research-tag">Measurement</span>
+        <div>
+          <h3>Cryogenic photocurrent &amp; optical characterization</h3>
+          <p>
+            Measuring photoresponse of 2D material devices at cryogenic temperature to connect
+            optical signatures back to underlying magnetic and electronic structure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Publications &amp; Talks</h2>
+      <span class="section-note">Selected</span>
+    </div>
+    <ul class="pub-list">
+      <li>
+        <span class="pub-authors">N. Shelly, et al.</span>, <a href="https://opg.optica.org/abstract.cfm?URI=CLEO_AT-2023-JW2A.97">"Field Effect Modulation using Transparent Conductive Oxides and Multilayer Transition Metal Dichalcogenides,"</a> in <span class="pub-venue">CLEO 2023, Technical Digest Series</span> (Optica Publishing Group, 2023), paper JW2A.97.
+      </li>
+      <li>
+        <span class="pub-authors">E. Roy, N. Shelly, C. Murray, and D. McCloskey</span>, "Investigation of Field Effect Tuning of Refractive Index in Transparent Conducting Oxide Thin Film Fabry-Perot Cavity Structures," in <span class="pub-venue">Proceedings of The 13th International Conference on Metamaterials, Photonic Crystals and Plasmonics</span>, ISSN: 2429-1390, 2023.
+      </li>
+      <li>
+        <span class="pub-authors">Soman, S., Shelly, N., Kurian, C. P., &amp; Sudheer Kumar, T. S.</span>, <a href="http://doi.org/10.11591/ijpeds.v10.i1.pp319-329">"DC transformer modeling and control of DC-DC buck converter,"</a> <span class="pub-venue">International Journal of Power Electronics and Drive Systems</span>, 10(1), 319-329, 2019.
+      </li>
+      <li>
+        <span class="pub-authors">D. Khicher, E. Roy, N. Shelly, C. Murray and D. McCloskey</span>, <a href="https://doi.org/10.1021/acsami.5c16532">"Enhanced Coloration Efficiency and Cycling Stability in Ultrathin NiOx Films Utilizing Zeroth Order Fabry-Perot Resonance"</a> — under review (<span class="pub-venue">ACS Applied Materials &amp; Interfaces</span>).
+      </li>
+    </ul>
+    <h3 class="pub-subhead">Talks</h3>
+    <ul class="pub-list">
+      <li>
+        "Optical modulation in lithographically defined MoS<sub>2</sub> pixels" (talk delivered by David McCloskey) — <span class="pub-venue">Nanop Barcelona, 2023</span>.
+      </li>
+      <li>
+        "Electro-optic Modulation in Large Area Multilayer MoS<sub>2</sub> Pixel Arrays" — <span class="pub-venue">ItsHer Women in STEMM Summit, Dublin, 2024</span>.
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head"><h2>Experience &amp; Education</h2></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-when">Jul 2025 — Present</div>
+        <div class="tl-what">Postdoctoral Researcher</div>
+        <div class="tl-where">Institut Quantique / 3IT, Université de Sherbrooke</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Sept 2020 — Feb 2025</div>
+        <div class="tl-what">PhD, School of Physics</div>
+        <div class="tl-where">Trinity College Dublin</div>
+        <div class="tl-where">Thesis: <a href="https://hdl.handle.net/2262/111960">Electro-optic properties and applications of thermally-assisted conversion based few-layer MoS<sub>2</sub> devices</a></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Sept 2018 — July 2020</div>
+        <div class="tl-what">M.Sc., Sustainable Energy — Energy Conversion and Storage</div>
+        <div class="tl-where">Technical University of Denmark</div>
+        <div class="tl-where">Thesis: Experimental platform for controlled migration of oxygen vacancies in SrTiO<sub>3</sub> heterostructures under elevated temperatures</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Aug 2014 — May 2018</div>
+        <div class="tl-what">B.Tech, Electrical and Electronics Engineering</div>
+        <div class="tl-where">Manipal Institute of Technology</div>
+        <div class="tl-where">Thesis: Synthesis of doped/composite thermoelectric materials for Peltier cooler applications</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pivot">
+  <div class="wrap">
+    <div class="section-head"><h2>What I'm exploring next</h2></div>
+    <p class="pivot-text">
+      Alongside my research, I'm exploring roles that build on this background in photonics
+      and 2D materials — particularly where it applies to quantum hardware and quantum-enabled
+      instrumentation, including quantum computing platforms and quantum approaches to medical
+      imaging such as quantum MRI.
+    </p>
+    <div class="chip-row">
+      <span class="chip">Quantum hardware</span>
+      <span class="chip">Photonic systems integration</span>
+      <span class="chip">Quantum computing applications</span>
+      <span class="chip">Quantum medical imaging</span>
+      <span class="chip">Research &amp; development roles</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head"><h2>Contact</h2></div>
+    <div class="contact-inner">
+      <p>Best way to reach me is by email — happy to talk about research, roles, or collaboration.</p>
+      <div class="contact-rows">
+        <div class="contact-row">
+          <span class="label">Email</span>
+          <a href="mailto:REPLACE_WITH_EMAIL" class="fill-me">[add email]</a>
+        </div>
+        <div class="contact-row">
+          <span class="label">LinkedIn</span>
+          <a href="#" class="fill-me">[add LinkedIn URL]</a>
+        </div>
+        <div class="contact-row">
+          <span class="label">Google Scholar</span>
+          <a href="#" class="fill-me">[add profile URL]</a>
+        </div>
+        <div class="contact-row">
+          <span class="label">GitHub</span>
+          <a href="#" class="fill-me">[optional]</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © <span id="year"></span> Nishtha Shelly. Built with care.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
